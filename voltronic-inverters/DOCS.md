@@ -22,7 +22,7 @@ This add-on requires some configuration to function properly. Below are the conf
 
 | Option             | Description                                   | Example Value   |
 |--------------------|-----------------------------------------------|-----------------|
-| `mqtt_broker_host` | The MQTT broker host address.                | `core-mosquitto`|
+| `mqtt_broker_host` | The MQTT broker host address_.               | `core-mosquitto`|
 | `mqtt_username`    | The username for the MQTT broker.            | `mqtt_user`     |
 | `mqtt_password`    | The password for the MQTT broker.            | `mqtt_password` |
 | `device_type`      | The type of device connection. Can be one of `serial`, `usb-serial`, or `usb`. | `usb`           |
