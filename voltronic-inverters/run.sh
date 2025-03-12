@@ -54,7 +54,7 @@ jq --arg server "$BROKER_HOST" \
    --arg model "VP1200MH" \
    --arg serial "96312410103699" \
    --arg ver "43.10" \
-   '.server = $server | .username = $username | .password = $password' | .devicename = $devicename' | .manufacturer = $manufacturer' | .model = $model' | .serial = $serial' | .ver = $ver' \
+   '.server = $server | .username = $username | .password = $password | .devicename = $devicename | .manufacturer = $manufacturer | .model = $model | .serial = $serial | .ver = $ver' \
    "$MQTT_CONFIG" > "${MQTT_CONFIG}.tmp" && mv "${MQTT_CONFIG}.tmp" "$MQTT_CONFIG" || {
     bashio::log.error "Error updating $MQTT_CONFIG"
     exit 1
