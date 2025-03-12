@@ -49,7 +49,12 @@ echo "[DEBUG] Updating mqtt.json file"
 jq --arg server "$BROKER_HOST" \
    --arg username "$USERNAME" \
    --arg password "$PASSWORD" \
-   '.server = $server | .username = $username | .password = $password' \
+   --arg devicename "sila" \
+   --arg manufacturer "SILA" \
+   --arg model "VP1200MH" \
+   --arg serial "96312410103699" \
+   --arg ver "43.10" \
+   '.server = $server | .username = $username | .password = $password' | .devicename = $devicename' | .manufacturer = $manufacturer' | .model = $model' | .serial = $serial' | .ver = $ver' \
    "$MQTT_CONFIG" > "${MQTT_CONFIG}.tmp" && mv "${MQTT_CONFIG}.tmp" "$MQTT_CONFIG" || {
     bashio::log.error "Error updating $MQTT_CONFIG"
     exit 1
