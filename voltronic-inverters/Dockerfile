@@ -15,16 +15,18 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt
 
 # Define the desired commit hash
-ARG GIT_COMMIT=a01e305846c697d985847405909e91ba81289a49
+##ARG GIT_COMMIT=a01e305846c697d985847405909e91ba81289a49
 
 # Clone the repository with Sparse Checkout and check out the specific commit
-## RUN git clone --filter=blob:none --no-checkout https://github.com/catalinbordan/docker-voltronic-homeassistant.git repo && \
-RUN git clone --filter=blob:none --no-checkout https://github.com/ned-kelly/docker-voltronic-homeassistant.git repo && \
-    cd repo && \
-    git fetch origin $GIT_COMMIT && \
-    git checkout $GIT_COMMIT && \
-    git sparse-checkout init --cone && \
-    git sparse-checkout set sources config
+##RUN git clone --filter=blob:none --no-checkout https://github.com/catalinbordan/docker-voltronic-homeassistant.git repo && \
+##RUN git clone --filter=blob:none --no-checkout https://github.com/ned-kelly/docker-voltronic-homeassistant.git repo && \
+##    cd repo && \
+##    git fetch origin $GIT_COMMIT && \
+##    git checkout $GIT_COMMIT && \
+##    git sparse-checkout init --cone && \
+##    git sparse-checkout set sources config
+
+RUN git clone https://github.com/catalinbordan/docker-voltronic-homeassistant.git repo
 
 # Create the destination directory and copy necessary files
 RUN mkdir -p /etc/inverter && \
