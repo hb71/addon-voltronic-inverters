@@ -44,16 +44,21 @@ sed -i "s|^device=.*|device=${DEVICE_PATH}|" "$INVERTER_CONFIG" || {
 BROKER_HOST=$(bashio::config 'mqtt_broker_host')
 USERNAME=$(bashio::config 'mqtt_username')
 PASSWORD=$(bashio::config 'mqtt_password')
+DEVICENAME=$(bashio::config 'device_name')
+MANUFACTURER=$(bashio::config 'device_manuf')
+MODEL=$(bashio::config 'device_model')
+SERIAL=$(bashio::config 'device_serial')
+FWVER=$(bashio::config 'device_fw')
 
 echo "[DEBUG] Updating mqtt.json file"
 jq --arg server "$BROKER_HOST" \
    --arg username "$USERNAME" \
    --arg password "$PASSWORD" \
-   --arg devicename "sila" \
-   --arg manufacturer "SILA" \
-   --arg model "VP1200MH" \
-   --arg serial "96312410103699" \
-   --arg ver "43.10" \
+   --arg devicename "$DEVICENAME" \
+   --arg manufacturer "$MANUFACTURER" \
+   --arg model "$MODEL" \
+   --arg serial "$SERIAL" \
+   --arg ver "$FWVER" \
    '.server = $server | .username = $username | .password = $password | .devicename = $devicename | .manufacturer = $manufacturer | .model = $model | .serial = $serial | .ver = $ver' \
    "$MQTT_CONFIG" > "${MQTT_CONFIG}.tmp" && mv "${MQTT_CONFIG}.tmp" "$MQTT_CONFIG" || {
     bashio::log.error "Error updating $MQTT_CONFIG"
