@@ -16,13 +16,23 @@ arch:
   - i386
 
 options:
-  mqtt_broker_host: "homeassistant"
+  mqtt_broker_host: "core-mosquitto"
   mqtt_username: "mqtt_user"
   mqtt_password: "mqtt_password"
-  device_type: usb
+  device_type: usb-serial
+  device_name: "inverter"
+  device_manuf: "manufacturer"
+  device_model: "model"
+  device_serial: "0000"
+  device_fw: "0.00"
 
 schema:
   mqtt_broker_host: str
   mqtt_username: str
   mqtt_password: str
   device_type: list(serial|usb-serial|usb)
+  device_name: str
+  device_manuf: str
+  device_model: str
+  device_serial: str
+  device_fw: str
